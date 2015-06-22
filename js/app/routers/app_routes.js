@@ -18,16 +18,22 @@ var AppRouter = Backbone.Router.extend({
       el: $('#main .app'),
       collection: Players
     })
-    player_view.render();
   },
 
   teamsIndex: function () {
     $("section#main .container h1").html("Teams");
-    this.renderView(new TeamsIndexView());
+    var teams_view = new TeamsIndexView({
+      el: $('#main .app'),
+      collection: Teams
+    })
   },
 
   matchesIndex: function () {
     $("section#main .container h1").html("Matches");
+    var matches_view = new MatchIndexView({
+      el: $('#main .app'),
+      collection: Matches
+    })
   },
 
 

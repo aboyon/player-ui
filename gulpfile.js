@@ -7,7 +7,17 @@ var runSequence = require('gulp-run-sequence');
 var webserver = require('gulp-webserver');
 
 gulp.task('compress_js', function() {
-  return gulp.src(['js/jquery.min.js', 'js/underscore.js', 'js/backbone.js', 'js/app/**/*.js'])
+  return gulp.src([
+    'js/jquery.min.js',
+    'js/underscore.js',
+    'js/backbone.js',
+    'js/app/models/*.js',
+    'js/app/collections/*.js',
+    'js/app/forms/*.js',
+    'js/app/templates/*.js',
+    'js/app/views/*.js',
+    'js/app/routers/*.js',
+  ])
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('js'));
 });
