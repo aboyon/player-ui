@@ -7,7 +7,7 @@ var runSequence = require('gulp-run-sequence');
 var webserver = require('gulp-webserver');
 
 gulp.task('compress_js', function() {
-  return gulp.src(['js/underscore.js', 'js/backbone.js', 'js/**/*.js'])
+  return gulp.src(['js/jquery.min.js', 'js/underscore.js', 'js/backbone.js', 'js/app/**/*.js'])
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('js'));
 });

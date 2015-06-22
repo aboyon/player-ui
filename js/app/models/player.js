@@ -1,5 +1,4 @@
 var Player = Backbone.Model.extend({
-  modelName: "Player",
   fetched: false,
   defaults: {
     name: "",
