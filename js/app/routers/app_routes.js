@@ -2,6 +2,7 @@ var AppRouter = Backbone.Router.extend({
   routes: {
     "": "playersIndex",
     "players":  "playersIndex",
+    "players/new":  "playersNew",
     "players/:id":  "playersShow",
     "players/:id/edit":  "playersEdit",
     "teams":    "teamsIndex",
@@ -15,7 +16,7 @@ var AppRouter = Backbone.Router.extend({
   playersIndex: function () {
     $("section#main .container h1").html("Players");
     var player_view = new PlayersIndexView({
-      el: $('#main .app'),
+      el: $('#main .app .content'),
       collection: Players
     })
   },
@@ -23,7 +24,7 @@ var AppRouter = Backbone.Router.extend({
   teamsIndex: function () {
     $("section#main .container h1").html("Teams");
     var teams_view = new TeamsIndexView({
-      el: $('#main .app'),
+      el: $('#main .app .content'),
       collection: Teams
     })
   },
@@ -31,7 +32,7 @@ var AppRouter = Backbone.Router.extend({
   matchesIndex: function () {
     $("section#main .container h1").html("Matches");
     var matches_view = new MatchIndexView({
-      el: $('#main .app'),
+      el: $('#main .app .content'),
       collection: Matches
     })
   },
@@ -40,7 +41,7 @@ var AppRouter = Backbone.Router.extend({
   playersShow: function (id) {
     var player = new Player({id: id})
     var player_view = new PlayerView({
-      el: $('#main .app'),
+      el: $('#main .app .content'),
       model: player
     })
   },
@@ -70,11 +71,20 @@ var AppRouter = Backbone.Router.extend({
     this.renderView(new MatchEdit());
   },
 
+  playersNew: function () {
+    $("section#main .container h1").html("Create a new player");
+    var player_form = new PlayerForm({
+      model: new Player(),
+      el: $('#main .app .content'),
+    });
+    player_form.render();
+  },
+
   bindNavigationToLinks: function() {
     $(".navigate").each(function(){
       $(this).click(function(e){
         e.preventDefault();
-        $('#main .app').html('loading...');
+        $('#main .app .content').html('loading...');
         var url = document.createElement("a");
         url.href = this.href;
         console.log(url.pathname);

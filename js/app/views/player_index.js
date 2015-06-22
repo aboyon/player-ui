@@ -11,8 +11,13 @@ var PlayersIndexView = Backbone.View.extend({
   },
 
   render : function() {
+    this.renderOptions();
     this.$el.html(this.template({ players: this.players.toJSON() }));
     appRouter.bindNavigationToLinks();
     return this;
+  },
+
+  renderOptions: function() {
+    this.$el.parent().find(".options").html(PlayerOptionsTemplate);
   }
 })

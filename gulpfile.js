@@ -17,6 +17,7 @@ gulp.task('compress_js', function() {
     'js/app/templates/*.js',
     'js/app/views/*.js',
     'js/app/routers/*.js',
+    'js/app/plugins/*.js',
   ])
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('js'));
