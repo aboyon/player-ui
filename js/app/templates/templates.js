@@ -6,8 +6,8 @@ var PlayerIndexTemplate = _.template("\
         <td><%= player.dob %></td>\
         <td><%= player.nationality %></td>\
         <td>\
-          <a class='btn btn-small btn-default edit-player-btn' data-player-id='<%= player.id %>' href='javascript:;'>Edit</a>\
-          <a class='btn btn-small btn-primary show-player-btn' data-player-id='<%= player.id %>' href='javascript:;'>View</a>\
+          <a class='navigate btn btn-small btn-default edit-player-btn' data-player-id='<%= player.id %>' href='/players/<%= player.id %>/edit'>Edit</a>\
+          <a class='navigate btn btn-small btn-primary show-player-btn' data-player-id='<%= player.id %>' href='/players/<%= player.id %>'>View</a>\
         </td>\
       </tr>\
     <%  }); %>\
@@ -20,8 +20,8 @@ var TeamIndexTemplate = _.template("\
       <tr>\
         <td><%= team.name %></td>\
         <td>\
-          <a class='btn btn-small btn-default pull-right edit-team-btn' data-team-id='<%= team.id %>' href='javascript:;'>Edit</a>\
-          <a class='btn btn-small btn-primary pull-right show-team-btn' data-team-id='<%= team.id %>' href='javascript:;'>View</a>\
+          <a class='navigate btn btn-small btn-default pull-right edit-team-btn' data-team-id='<%= team.id %>' href='/teams/<%= team.id %>/edit'>Edit</a>\
+          <a class='navigate btn btn-small btn-primary pull-right show-team-btn' data-team-id='<%= team.id %>' href='/teams/<%= team.id %>'>View</a>\
         </td>\
       </tr>\
     <%  }); %>\
@@ -42,8 +42,8 @@ var MatchIndexTemplate = _.template("\
         <td><%= match.visitor.name %></td>\
         <td><%= match.date %></td>\
         <td>\
-          <a class='btn btn-small btn-default pull-right edit-team-btn' data-match-id='<%= match.id %>' href='javascript:;'>Edit</a>\
-          <a class='btn btn-small btn-primary pull-right show-team-btn' data-match-id='<%= match.id %>' href='javascript:;'>View</a>\
+          <a class='navigate btn btn-small btn-default pull-right edit-team-btn' data-match-id='<%= match.id %>' href='/matches/<%= match.id %>/edit'>Edit</a>\
+          <a class='navigate btn btn-small btn-primary pull-right show-team-btn' data-match-id='<%= match.id %>' href='/matches/<%= match.id %>/edit'>View</a>\
         </td>\
       </tr>\
     <%  }); %>\
@@ -52,10 +52,9 @@ var MatchIndexTemplate = _.template("\
 
 
 var PlayerViewTemplate = _.template("\
-  <h2><%= player.name %></h2>\
   <hr>\
   <ul>\
-    <li><%= player.dob %></li>\
-    <li><%= player.nationality %></li>\
+    <li>Date of Birth: <%= player.dob %></li>\
+    <li>Nationality: <%= player.nationality %></li>\
   </ul>\
 ");

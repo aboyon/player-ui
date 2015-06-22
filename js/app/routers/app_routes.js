@@ -37,9 +37,12 @@ var AppRouter = Backbone.Router.extend({
   },
 
 
-  playersShow: function () {
-    $("section#main .container h1").html("Viewing");
-    this.renderView(new PlayerView());
+  playersShow: function (id) {
+    var player = new Player({id: id})
+    var player_view = new PlayerView({
+      el: $('#main .app'),
+      model: player
+    })
   },
 
   teamsShow: function () {
@@ -67,19 +70,24 @@ var AppRouter = Backbone.Router.extend({
     this.renderView(new MatchEdit());
   },
 
+  bindNavigationToLinks: function() {
+    $(".navigate").each(function(){
+      $(this).click(function(e){
+        e.preventDefault();
+        $('#main .app').html('loading...');
+        var url = document.createElement("a");
+        url.href = this.href;
+        console.log(url.pathname);
+        appRouter.navigate(url.pathname, {trigger: true});
+      });
+    });
+  }
 });
 
 var appRouter = new AppRouter();
 
-Backbone.history.start({pushState: true, root: '/'});
+Backbone.history.start({pushState: true});
 
 $(document).ready(function(){
-  $(".navigate").each(function(){
-    $(this).click(function(e){
-      e.preventDefault();
-      $('#main .app').html('loading...');
-      var route = this.href.split(/\/+/g);
-      appRouter.navigate(route[route.length-1], {trigger: true});
-    });
-  });
+  appRouter.bindNavigationToLinks();
 })
