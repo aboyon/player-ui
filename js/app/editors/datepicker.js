@@ -8,7 +8,7 @@ Backbone.Form.editors.Datepicker = Backbone.Form.editors.Text.extend({
 
   render: function () {
     this.$el.datepicker({
-      endDate:  new Date(),
+      startDate:  "1998-01-01",
       todayHighlight: true,
       autoclose: true,
       format: "yyyy-mm-dd"

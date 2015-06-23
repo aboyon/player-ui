@@ -10,7 +10,12 @@ var MatchIndexView = Backbone.View.extend({
   },
 
   render : function() {
+    this.renderOptions();
     this.$el.html(this.template({ matches: this.matches.toJSON() }));
     return this;
+  },
+
+  renderOptions: function() {
+    this.$el.parent().find(".options").html(MatchOptionsTemplate);
   }
 })

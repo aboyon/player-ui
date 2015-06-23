@@ -7,6 +7,7 @@
     <meta name="keywords" content="Players UI">
     <meta name="description" content="Players UI">
     <meta name="author" content="David Silveira">
+    <link href="css/all.min.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
@@ -15,32 +16,24 @@
       .sidebar-nav {
         padding: 9px 0;
       }
-      
-      .item_found {
-        color: #468847;
-        background-color: #DFF0D8;
-        border-color: #D6E9C6;
-      }
-
     </style>
     <script type="text/javascript">
       var CONFIG_URL = "http://localhost:3000/api/v1/"
     </script>
   </head>
 
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">Backbone + API example</a>
-          <div class="nav-collapse">
-            <ul id="main_main" class="nav">
+  <body class='index preview' data-offset='0' data-spy='scroll' data-target='.subnav' id='page-top'>
+    <div class='navbar navbar-default navbar-fixed-top'>
+      <div class='container'>
+        <div class='navbar-header-page-scroll'>
+          <button class='navbar-toggle' data-target='main-menu' data-toggle='collapse'>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a class='navbar-brand' href='javascript:;'>Backbone + API example</a>
+          <div class='navbar-collapse collapse' id='main-menu'>
+            <ul id="main_main" class='nav navbar-nav navbar-right'>
               <li><a class="navigate" href="/">Home</a></li>
               <li><a class="navigate" href="/players">Players</a></li>
               <li><a class="navigate" href="/matches">Matches</a></li>
@@ -54,12 +47,11 @@
       <div class="container">
         <h1>Football players, teams &amp; matches</h1>
         <div class="app">
-          <div class="options"></div>
-          <div class="content"></div>
+          <section class="options"></section>
+          <section class="content"></section>
         </div>
       </div>
     </section>
     <script type="text/javascript" src="js/all.min.js"></script>    
-    <link href="css/all.min.css" rel="stylesheet">
   </body>
 </html>

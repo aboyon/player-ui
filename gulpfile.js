@@ -9,6 +9,7 @@ var webserver = require('gulp-webserver');
 gulp.task('compress_js', function() {
   return gulp.src([
     'js/jquery.min.js',
+    'js/bootstrap.js',
     'js/underscore.js',
     'js/backbone.js',
     'js/app/plugins/*.js',
@@ -16,6 +17,7 @@ gulp.task('compress_js', function() {
     'js/app/collections/*.js',
     'js/app/editors/*.js',
     'js/app/forms/*.js',
+    'js/app/helpers/*.js',
     'js/app/templates/*.js',
     'js/app/views/*.js',
     'js/app/routers/*.js',

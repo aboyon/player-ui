@@ -2,7 +2,7 @@ var PlayerForm = Backbone.Form.extend({
   redirectOnSuccess: "/players",
 
   schema: {
-    nationality: {
+    local_team: {
       type: 'Select',
       options: ['ARG', 'US', 'ENG','GER','SPA','POR','BRA','ESP'],
       editorAttrs: {

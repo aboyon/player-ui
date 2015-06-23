@@ -1,16 +1,20 @@
 var AppRouter = Backbone.Router.extend({
   routes: {
     "": "playersIndex",
-    "players":  "playersIndex",
-    "players/new":  "playersNew",
-    "players/:id":  "playersShow",
-    "players/:id/edit":  "playersEdit",
-    "teams":    "teamsIndex",
-    "teams/:id":  "teamsShow",
-    "teams/:id/edit":  "teamsEdit",
-    "matches":    "matchesIndex",
-    "matches/:id":  "matchesShow",
-    "matches/:id/edit":  "matchesEdit",
+    "players":          "playersIndex",
+    "players/new":      "playersNew",
+    "players/:id":      "playersShow",
+    "players/:id/edit": "playersEdit",
+
+    "teams":            "teamsIndex",
+    "teams/new":        "teamsNew",
+    "teams/:id":        "teamsShow",
+    "teams/:id/edit":   "teamsEdit",
+
+    "matches":          "matchesIndex",
+    "matches/new":      "matchesNew",
+    "matches/:id":      "matchesShow",
+    "matches/:id/edit": "matchesEdit",
   },
 
   playersIndex: function () {
@@ -74,7 +78,19 @@ var AppRouter = Backbone.Router.extend({
 
   teamsEdit: function () {
     $("section#main .container h1").html("Editing");
-    this.renderView(new TeamEdit());
+    new Team({id: id}).fetch({
+      success: function(team){
+        $("section#main .container h1").html("Editing team " + team.get("name"));
+        var team_form = new TeamForm({
+          model: team,
+          submitButton: 'Save'
+        }).render();
+        $('#main .app .content').html(team_form.el);
+      },
+      error: function(model, xhr, options) {
+        $('#main .app .content').html("Ahh..");
+      }
+    });
   },
 
   matchesEdit: function () {
@@ -89,6 +105,24 @@ var AppRouter = Backbone.Router.extend({
       submitButton: 'Save'
     }).render();
     $('#main .app .content').html(player_form.el);
+  },
+
+  teamsNew: function () {
+    $("section#main .container h1").html("Create a new team");
+    var team_form = new TeamForm({
+      model: new Team(),
+      submitButton: 'Save'
+    }).render();
+    $('#main .app .content').html(team_form.el);
+  },
+
+  matchesNew: function () {
+    $("section#main .container h1").html("Create a new match");
+    var match_form = new MatchForm({
+      model: new Match(),
+      submitButton: 'Save'
+    }).render();
+    $('#main .app .content').html(match_form.el);
   },
 
   bindNavigationToLinks: function() {

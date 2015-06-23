@@ -479,10 +479,10 @@ var Form = Backbone.View.extend({
 
   //STATICS
   template: _.template('\
-    <form>\
+    <form class="backbone-forms">\
      <div data-fieldsets></div>\
       <% if (submitButton) { %>\
-        <button type="submit"><%= submitButton %></button>\
+        <button type="submit" class="btn btn-primary"><%= submitButton %></button>\
       <% } %>\
     </form>\
   ', null, this.templateSettings),

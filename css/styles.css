@@ -1,0 +1,17 @@
+.modal-content {
+  padding:10px;
+}
+
+.backbone-forms {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.backbone-forms fieldset {
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.backbone-forms fieldset div{
+  margin-top:10px;
+}

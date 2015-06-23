@@ -10,7 +10,12 @@ var TeamsIndexView = Backbone.View.extend({
   },
 
   render : function() {
+    this.renderOptions();
     this.$el.html(this.template({ teams: this.teams.toJSON() }));
     return this;
+  },
+
+  renderOptions: function() {
+    this.$el.parent().find(".options").html(TeamOptionsTemplate);
   }
 })
