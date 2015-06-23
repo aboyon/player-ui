@@ -61,7 +61,8 @@ var AppRouter = Backbone.Router.extend({
       success: function(player){
         $("section#main .container h1").html("Editing to " + player.get("name"));
         var player_form = new PlayerForm({
-          model: player
+          model: player,
+          submitButton: 'Save'
         }).render();
         $('#main .app .content').html(player_form.el);
       },
@@ -84,7 +85,8 @@ var AppRouter = Backbone.Router.extend({
   playersNew: function () {
     $("section#main .container h1").html("Create a new player");
     var player_form = new PlayerForm({
-      model: new Player()
+      model: new Player(),
+      submitButton: 'Save'
     }).render();
     $('#main .app .content').html(player_form.el);
   },

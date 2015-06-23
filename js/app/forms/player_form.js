@@ -1,5 +1,9 @@
 var PlayerForm = Backbone.Form.extend({
 
+  events: {
+    "submit": "submitForm"
+  },
+
   schema: {
     nationality: { type: 'Select', options: ['ARG', 'US', 'ENG','GER','SPA','POR','BRA','ESP'] },
     name:  { 
@@ -16,5 +20,19 @@ var PlayerForm = Backbone.Form.extend({
       },
       validators: ["required"]
     }
+  },
+
+  submitForm:function(e) {
+    e.preventDefault();
+    this.commit();
+    console.log(this.model);
+    this.model.save(null, {
+      success: function(model) {
+        appRouter.navigate("/players",{trigger: true})
+      },
+      error: function(model) {
+        alert("Ups something is wrong")
+      }
+    })
   }
 })
