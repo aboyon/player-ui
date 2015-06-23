@@ -59,23 +59,6 @@ var PlayerViewTemplate = _.template("\
   </ul>\
 ");
 
-var PlayerFormTemplate = _.template("\
-  <form id='player'>\
-    <% if (player.id) { %>\
-    <input type='hidden' name='id' value='<%= player.name %>' />\
-    <% } %>\
-    <h2>Complete with the player information</h2>\
-    <label for='player_name'>Name</label>\
-    <input type='text' name='name' id='player_name' placeholder='e.g Lionel Messi' value='<%= player.name %>'/>\
-    <label for='player_dob'>Date of birth</label>\
-    <input type='text' name='dob' id='player_dob' placeholder='1980-10-16' value='<%= player.dob %>'/>\
-    <label for='player_nationality'>Nationality</label>\
-    <input type='text' name='nationality' id='player_nationality' placeholder='ARG' value='<%= player.nationality %>'/>\
-    <hr />\
-    <a class='btn btn-primary save-btn' href='javascript:;'>Save</a>\
-   </form>\
-");
-
 var PlayerOptionsTemplate = _.template("\
   <section>\
     <div class='row'>\

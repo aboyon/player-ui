@@ -1,38 +1,20 @@
-var PlayerForm = Backbone.View.extend({
+var PlayerForm = Backbone.Form.extend({
 
-  events: {
-    'click .save-btn' : 'saveUser',
-  },
-
-  initialize: function() {
-    this.template = PlayerFormTemplate;
-    var self = this;
-    this.model.fetch({ success: function(){
-      self.render();
-    }});
-    this.listenTo(this.model, 'reset', this.render);
-  },
-
-  render: function() {
-    this.$el.html(this.template({ player: this.model.toJSON() }));
-    this.$el.find("form#player input[name='dob']").datepicker({
-      format: 'yyyy-mm-dd',
-      startDate: '1950-01-01',
-      endDate: '1998-12-31'
-    });
-    return this;
-  },
-
-  saveUser: function() {
-    var params = JSON.stringify(this.$el.find("form#player").serializeObject());
-    var player = new Player(params)
-    player.save(null,{
-      success: function (model, respose, options) {
-        console.log("The model has been saved to the server");
+  schema: {
+    nationality: { type: 'Select', options: ['ARG', 'US', 'ENG','GER','SPA','POR','BRA','ESP'] },
+    name:  { 
+      type: 'Text', 
+      editorAttrs: {
+        placeholder: "e.g. Ricardo Bochini"
       },
-      error: function (model, xhr, options) {
-        console.log("Something went wrong while saving the model");
-      }
-    });
+      validators: ["required"]
+    },
+    dob:   { 
+      type: 'Datepicker', 
+      editorAttrs: {
+        placeholder: "e.g. 1980-10-16"
+      },
+      validators: ["required"]
+    }
   }
 })

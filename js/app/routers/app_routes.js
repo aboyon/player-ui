@@ -56,9 +56,19 @@ var AppRouter = Backbone.Router.extend({
     this.renderView(new MatchView());
   },
 
-  playersEdit: function () {
-    $("section#main .container h1").html("Editing");
-    this.renderView(new PlayerEdit());
+  playersEdit: function (id) {
+    new Player({id: id}).fetch({
+      success: function(player){
+        $("section#main .container h1").html("Editing to " + player.get("name"));
+        var player_form = new PlayerForm({
+          model: player
+        }).render();
+        $('#main .app .content').html(player_form.el);
+      },
+      error: function(model, xhr, options) {
+        $('#main .app .content').html("Ahh..");
+      }
+    });
   },
 
   teamsEdit: function () {
@@ -74,10 +84,9 @@ var AppRouter = Backbone.Router.extend({
   playersNew: function () {
     $("section#main .container h1").html("Create a new player");
     var player_form = new PlayerForm({
-      model: new Player(),
-      el: $('#main .app .content'),
-    });
-    player_form.render();
+      model: new Player()
+    }).render();
+    $('#main .app .content').html(player_form.el);
   },
 
   bindNavigationToLinks: function() {
@@ -87,11 +96,11 @@ var AppRouter = Backbone.Router.extend({
         $('#main .app .content').html('loading...');
         var url = document.createElement("a");
         url.href = this.href;
-        console.log(url.pathname);
         appRouter.navigate(url.pathname, {trigger: true});
       });
     });
-  }
+  },
+
 });
 
 var appRouter = new AppRouter();

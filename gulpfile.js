@@ -11,13 +11,14 @@ gulp.task('compress_js', function() {
     'js/jquery.min.js',
     'js/underscore.js',
     'js/backbone.js',
+    'js/app/plugins/*.js',
     'js/app/models/*.js',
     'js/app/collections/*.js',
+    'js/app/editors/*.js',
     'js/app/forms/*.js',
     'js/app/templates/*.js',
     'js/app/views/*.js',
     'js/app/routers/*.js',
-    'js/app/plugins/*.js',
   ])
     .pipe(concat('all.min.js'))
     .pipe(gulp.dest('js'));
