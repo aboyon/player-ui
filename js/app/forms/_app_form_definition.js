@@ -1,5 +1,4 @@
 var _AppFormDefinition = {
-  redirectOnSuccess: "/",
 
   events: {
     "submit": "submitForm"

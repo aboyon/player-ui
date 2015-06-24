@@ -36,9 +36,9 @@ gulp.task('compress_css', function () {
 gulp.task('webserver', function() {
   gulp.src('.')
     .pipe(webserver({
-      livereload: true,
-      directoryListing: true,
-      open: true
+      directoryListing: false,
+      open: true,
+      fallback: "index.html"
     }));
 });
 

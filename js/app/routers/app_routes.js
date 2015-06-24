@@ -6,8 +6,8 @@ var AppRouter = Backbone.Router.extend({
     "players/:id":      "playersShow",
     "players/:id/edit": "playersEdit",
 
-    "teams":            "teamsIndex",
     "teams/new":        "teamsNew",
+    "teams":            "teamsIndex",
     "teams/:id":        "teamsShow",
     "teams/:id/edit":   "teamsEdit",
 
@@ -76,7 +76,7 @@ var AppRouter = Backbone.Router.extend({
     });
   },
 
-  teamsEdit: function () {
+  teamsEdit: function (id) {
     $("section#main .container h1").html("Editing");
     new Team({id: id}).fetch({
       success: function(team){
@@ -118,7 +118,7 @@ var AppRouter = Backbone.Router.extend({
 
   matchesNew: function () {
     $("section#main .container h1").html("Create a new match");
-    var match_form = new MatchForm({
+    var match_form = new MatchesForm({
       model: new Match(),
       submitButton: 'Save'
     }).render();

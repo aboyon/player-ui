@@ -1,4 +1,5 @@
 var TeamForm = Backbone.Form.extend({
+  
   redirectOnSuccess: "/teams",
 
   schema: {
